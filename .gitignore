@@ -1,4 +1,5 @@
 # These are some examples of commonly ignored file patterns.
 .DS_Store
+# what the hell is going on?
 # virtual env
 venv
