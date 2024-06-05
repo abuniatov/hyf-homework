@@ -23,8 +23,6 @@ if (shouldShowResultInDogYears) {
 
 // Housey pricey (A house price estimator) TASK 3
 
-// Simplified formula for calculating the price of a house: housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
-
 // Peter is considering a house that is 8m wide, 10m deep and 10m high. The garden size is 100m2. The house costs 2.500.000.
 //  Julia is considering a house that is 5m wide, 11m deep and 8m high. The garden size is 70m2. This house costs 1.000.000.
 
@@ -62,3 +60,41 @@ if (juliaHousePrice > juliaRealCost) {
 } else {
   console.log("Julia will pay less for the house.");
 }
+
+// Ez Namey (Startup name generator) TASK 4
+
+// Create arrays
+const firstWords = [
+  "Innovative",
+  "Cutting-Edge",
+  "NextGen",
+  "Revolutionary",
+  "Advanced",
+  "Intelligent",
+  "Disruptive",
+  "Pioneering",
+  "Futuristic",
+  "Scalable",
+];
+const secondWords = [
+  "Solutions",
+  "Technologies",
+  "Innovations",
+  "Systems",
+  "Networks",
+  "Platforms",
+  "Dynamics",
+  "Enterprises",
+  "Ventures",
+  "Labs",
+];
+
+// Generates random indexes from 0 to 9 (because 10 values in each array)
+const randomNr1 = Math.floor(Math.random() * 10);
+const randomNr2 = Math.floor(Math.random() * 10);
+
+// Generates and outputs the random Startup name in the console
+const startupName = `${firstWords[randomNr1]} ${secondWords[randomNr2]}`;
+console.log(
+  `The startup: ${startupName} contains ${startupName.length} characters`
+);
