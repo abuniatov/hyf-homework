@@ -1,11 +1,6 @@
 // Flight booking fullname function
 
-function getFullname(firstName, lastName, useFormalName, gender) {
-  // Check if useFormalName is undefined
-  if (useFormalName === undefined) {
-    return "Error: Missing argument";
-  }
-
+function getFullname(firstName, lastName, useFormalName = false, gender) {
   // Handle empty strings for firstName and lastName
   if (!firstName && !lastName) {
     return "Anonymous";
@@ -91,18 +86,19 @@ console.log(clothesToWear); // Logs out: "wear jeans and a long-sleeve shirt or 
 const class07Students = []; // Class 07 Students Array
 
 function addStudentToClass(studentName) {
-  // Guard clauses and the main logic in a series of ternary operators
-  !studentName
-    ? console.log("Cannot add an empty string as a student name")
-    : class07Students.includes(studentName)
-      ? console.log(`Student ${studentName} is already in the class`)
-      : studentName === "Queen"
-        ? (class07Students.push(studentName),
-          console.log(`${studentName} has been added to the class`))
-        : class07Students.length >= 6
-          ? console.log("Cannot add more students to the class")
-          : (class07Students.push(studentName),
-            console.log(`${studentName} has been added to the class`));
+  if (!studentName) {
+    console.log("Cannot add an empty string as a student name");
+  } else if (class07Students.includes(studentName)) {
+    console.log(`Student ${studentName} is already in the class`);
+  } else if (studentName === "Queen") {
+    class07Students.push(studentName);
+    console.log(`${studentName} has been added to the class`);
+  } else if (class07Students.length >= 6) {
+    console.log("Cannot add more students to the class");
+  } else {
+    class07Students.push(studentName);
+    console.log(`${studentName} has been added to the class`);
+  }
 }
 
 // Function to get the number of students in the class
