@@ -11,11 +11,14 @@ const dogYearOfBirth = 2020;
 const dogYearFuture = 2030;
 
 const shouldShowResultInDogYears = true; // Change this to false to show the result in human years
+
+let dogYear = dogYearFuture - dogYearOfBirth; // Calculating the age in dog years
+
 if (shouldShowResultInDogYears) {
-  dogYear = dogYearFuture - dogYearOfBirth; // Calculating the age in dog years
+  dogYear = dogYear * 7;
   console.log(`Your dog will be ${dogYear} dog years old in ${dogYearFuture}.`); // Showing the result in dog years
 } else {
-  dogYear = (dogYearFuture - dogYearOfBirth) * 7; // Calculating the age in human years (assuming thet 1 human year equals to 7 dog years)
+  dogYear = (dogYearFuture - dogYearOfBirth) * 7; // Calculating the age in human years (assuming that 1 human year equals to 7 dog years)
   console.log(
     `Your dog will be ${dogYear} human years old in ${dogYearFuture}.` // Showing the result in human years
   );
@@ -30,32 +33,32 @@ if (shouldShowResultInDogYears) {
 // House Price formula: housePrice = volume * 2.5 * 1000 + gardenSize * 300;
 
 // Peter's house details:
-const peterWidth = 8;
-const peterHeight = 10;
-const peterDepth = 10;
+const peterHouseWidth = 8;
+const peterHouseHeight = 10;
+const peterHouseDepth = 10;
 const peterGardenSize = 100;
-const peterRealCost = 2500000;
+const peterHouseRealCost = 2500000;
 
 // Julia's house details:
-const juliaWidth = 5;
-const juliaHeigth = 8;
-const juliaDepth = 11;
+const juliaHouseWidth = 5;
+const juliaHouseHeight = 8;
+const juliaHouseDepth = 11;
 const juliaGardenSize = 70;
-const juliaRealCost = 1000000;
+const juliaHouseRealCost = 1000000;
 
-const peterHouseVolume = peterWidth * peterHeight * peterDepth;
-const juliaHouseVolume = juliaWidth * juliaHeigth * juliaDepth;
+const peterHouseVolume = peterHouseWidth * peterHouseHeight * peterHouseDepth;
+const juliaHouseVolume = juliaHouseWidth * juliaHouseHeight * juliaHouseDepth;
 
-let peterHousePrice = peterHouseVolume * 2.5 * 1000 + peterGardenSize * 300;
-let juliaHousePrice = juliaHouseVolume * 2.5 * 1000 + juliaGardenSize * 300;
+const peterHousePrice = peterHouseVolume * 2.5 * 1000 + peterGardenSize * 300;
+const juliaHousePrice = juliaHouseVolume * 2.5 * 1000 + juliaGardenSize * 300;
 
-if (peterHousePrice > peterRealCost) {
+if (peterHousePrice > peterHouseRealCost) {
   console.log("Peter will pay more for the house");
 } else {
   console.log("Peter will pay less for the house.");
 }
 
-if (juliaHousePrice > juliaRealCost) {
+if (juliaHousePrice > juliaHouseRealCost) {
   console.log("Julia will pay more for the house.");
 } else {
   console.log("Julia will pay less for the house.");
