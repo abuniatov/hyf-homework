@@ -22,3 +22,17 @@ const voiceAssistant = (function () {
         ? `Your name is ${userName}`
         : "You haven't told me your name yet.";
     }
+
+    // Add a task to your todo list
+    if (command.startsWith("add")) {
+      const todo = command
+        .replace("add ", "")
+        .replace(" to my todo", "")
+        .trim();
+      if (todo) {
+        todos.push(todo);
+        return `${todo} added to your todo`;
+      } else {
+        return "Please provide a valid todo item.";
+      }
+    }
