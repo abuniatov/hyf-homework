@@ -66,3 +66,14 @@ const voiceAssistant = (function () {
       const options = { day: "numeric", month: "long", year: "numeric" };
       return today.toLocaleDateString("en-US", options);
     }
+
+    // Simple math operation
+    if (command.startsWith("what is")) {
+      const expression = command.replace("what is", "").trim().replace("?", "");
+      try {
+        const result = eval(expression);
+        return `${expression} is ${result}`;
+      } catch (error) {
+        return `I can't calculate that.`;
+      }
+    }
