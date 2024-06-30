@@ -77,3 +77,23 @@ const voiceAssistant = (function () {
         return `I can't calculate that.`;
       }
     }
+
+    // Timer
+    if (command.startsWith("set a timer for ")) {
+      const time = command
+        .replace("set a timer for ", "")
+        .replace(" minutes", "")
+        .trim();
+      const minutes = parseInt(time, 10);
+      if (isNaN(minutes)) {
+        return "Please provide a valid number of minutes.";
+      } else {
+        setTimeout(
+          () => {
+            console.log("Timer done");
+          },
+          minutes * 60 * 1000
+        );
+        return `Timer set for ${minutes} minutes.`;
+      }
+    }
