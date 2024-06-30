@@ -16,4 +16,9 @@ const voiceAssistant = (function () {
       }
     }
 
-    
+    // Name response
+    if (command === "what is my name?") {
+      return userName
+        ? `Your name is ${userName}`
+        : "You haven't told me your name yet.";
+    }
