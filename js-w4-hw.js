@@ -97,3 +97,14 @@ const voiceAssistant = (function () {
         return `Timer set for ${minutes} minutes.`;
       }
     }
+
+        // Current time
+    if (command === "what time is it?") {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const formattedTime = `${hours}:${minutes < 10 ? "0" + minutes : minutes}`;
+      return `The current time is ${formattedTime}`;
+    }
+
+    
