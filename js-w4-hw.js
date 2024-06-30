@@ -12,7 +12,9 @@ const voiceAssistant = (function () {
         return `You have already introduced yourself as ${userName}.`;
       } else {
         userName = name;
-        return `Nice to meet you, ${userName.charAt(0).toUpperCase() + userName.slice(1)}.`;
+        return `Nice to meet you, ${
+          userName.charAt(0).toUpperCase() + userName.slice(1)
+        }.`;
       }
     }
 
@@ -37,7 +39,7 @@ const voiceAssistant = (function () {
       }
     }
 
-        // Remove a task from your todo list
+    // Remove a task from your todo list
     if (command.startsWith("remove")) {
       const todo = command
         .replace("remove ", "")
@@ -57,10 +59,12 @@ const voiceAssistant = (function () {
       if (todos.length === 0) {
         return "Your todo list is empty.";
       }
-      return `You have ${todos.length} todo${todos.length > 1 ? "s" : ""}: ${todos.join(" and ")}`;
+      return `You have ${todos.length} todo${
+        todos.length > 1 ? "s" : ""
+      }: ${todos.join(" and ")}`;
     }
 
-      // Current date
+    // Current date
     if (command === "what day is it today?") {
       const today = new Date();
       const options = { day: "numeric", month: "long", year: "numeric" };
@@ -88,23 +92,38 @@ const voiceAssistant = (function () {
       if (isNaN(minutes)) {
         return "Please provide a valid number of minutes.";
       } else {
-        setTimeout(
-          () => {
-            console.log("Timer done");
-          },
-          minutes * 60 * 1000
-        );
+        setTimeout(() => {
+          console.log("Timer done");
+        }, minutes * 60 * 1000);
         return `Timer set for ${minutes} minutes.`;
       }
     }
 
-        // Current time
+    // Current time
     if (command === "what time is it?") {
       const now = new Date();
       const hours = now.getHours();
       const minutes = now.getMinutes();
-      const formattedTime = `${hours}:${minutes < 10 ? "0" + minutes : minutes}`;
+      const formattedTime = `${hours}:${
+        minutes < 10 ? "0" + minutes : minutes
+      }`;
       return `The current time is ${formattedTime}`;
     }
 
-    
+    return "I don't understand that command.";
+  }
+
+  return {
+    getReply,
+  };
+})();
+
+console.log(voiceAssistant.getReply("Hello my name is Benjamin"));
+console.log(voiceAssistant.getReply("What is my name?"));
+console.log(voiceAssistant.getReply("Add fishing to my todo"));
+console.log(voiceAssistant.getReply("What is on my todo?"));
+console.log(voiceAssistant.getReply("Remove fishing from my todo"));
+console.log(voiceAssistant.getReply("What day is it today?"));
+console.log(voiceAssistant.getReply("What is 4 + 4?"));
+console.log(voiceAssistant.getReply("Set a timer for 4 minutes"));
+console.log(voiceAssistant.getReply("What time is it?"));
