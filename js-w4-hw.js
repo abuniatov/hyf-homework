@@ -36,7 +36,7 @@ const voiceAssistant = (function () {
         return "Please provide a valid todo item.";
       }
     }
-    
+
         // Remove a task from your todo list
     if (command.startsWith("remove")) {
       const todo = command
@@ -58,4 +58,11 @@ const voiceAssistant = (function () {
         return "Your todo list is empty.";
       }
       return `You have ${todos.length} todo${todos.length > 1 ? "s" : ""}: ${todos.join(" and ")}`;
+    }
+
+      // Current date
+    if (command === "what day is it today?") {
+      const today = new Date();
+      const options = { day: "numeric", month: "long", year: "numeric" };
+      return today.toLocaleDateString("en-US", options);
     }
