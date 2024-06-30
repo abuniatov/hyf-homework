@@ -36,3 +36,26 @@ const voiceAssistant = (function () {
         return "Please provide a valid todo item.";
       }
     }
+    
+        // Remove a task from your todo list
+    if (command.startsWith("remove")) {
+      const todo = command
+        .replace("remove ", "")
+        .replace(" from my todo", "")
+        .trim();
+      const index = todos.indexOf(todo);
+      if (index > -1) {
+        todos.splice(index, 1);
+        return `Removed ${todo} from your todo`;
+      } else {
+        return `${todo} is not in your todo list`;
+      }
+    }
+
+    // Respond with your todo list
+    if (command === "what is on my todo?") {
+      if (todos.length === 0) {
+        return "Your todo list is empty.";
+      }
+      return `You have ${todos.length} todo${todos.length > 1 ? "s" : ""}: ${todos.join(" and ")}`;
+    }
