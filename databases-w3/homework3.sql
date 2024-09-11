@@ -12,7 +12,7 @@ CREATE TABLE mealSharingPlatform (
     `when` DATETIME NOT NULL,
     max_reservations INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    created_date DATETIME NOT NULL
+    created_date DATE NOT NULL
 );
 
 CREATE TABLE reservation (
@@ -23,5 +23,15 @@ CREATE TABLE reservation (
     contact_phonenumber VARCHAR(255) NOT NULL,
     contact_name VARCHAR(255) NOT NULL,
     contact_email VARCHAR(255) UNIQUE NOT NULL,
+    FOREIGN KEY (meal_id) REFERENCES mealSharingPlatform(id)
+);
+
+CREATE TABLE review (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    meal_id INT NOT NULL,
+    stars INT NOT NULL,
+    created_date DATE NOT NULL,
     FOREIGN KEY (meal_id) REFERENCES mealSharingPlatform(id)
 );
