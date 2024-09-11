@@ -4,7 +4,7 @@ CREATE DATABASE mealSharingPlatform
 
 USE mealSharingPlatform;
 
-CREATE TABLE mealSharingPlatform (
+CREATE TABLE meal (
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE reservation (
     contact_phonenumber VARCHAR(255) NOT NULL,
     contact_name VARCHAR(255) NOT NULL,
     contact_email VARCHAR(255) UNIQUE NOT NULL,
-    FOREIGN KEY (meal_id) REFERENCES mealSharingPlatform(id)
+    FOREIGN KEY (meal_id) REFERENCES meal(id)
 );
 
 CREATE TABLE review (
@@ -33,5 +33,5 @@ CREATE TABLE review (
     meal_id INT NOT NULL,
     stars INT NOT NULL,
     created_date DATE NOT NULL,
-    FOREIGN KEY (meal_id) REFERENCES mealSharingPlatform(id)
+    FOREIGN KEY (meal_id) REFERENCES meal(id)
 );
