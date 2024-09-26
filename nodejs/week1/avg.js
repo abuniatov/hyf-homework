@@ -3,6 +3,7 @@ function calculateAverage(args) {
     return "Please provide a list of numbers separated by spaces.";
   }
 
+  const convertedNumbers = args.map((arg) => parseFloat(arg));
   const invalidArgs = args.filter((num) => isNaN(num));
   const validNumbers = convertedNumbers.filter((num) => !isNaN(num));
 
