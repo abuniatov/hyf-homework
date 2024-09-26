@@ -4,9 +4,7 @@ function calculateAverage(args) {
   }
 
   const convertedNumbers = args.map((arg) => parseFloat(arg));
-  const invalidArgs = args.filter((arg, index) =>
-    isNaN(convertedNumbers[index])
-  );
+  const invalidArgs = args.filter((num) => isNaN(num));
   const validNumbers = convertedNumbers.filter((num) => !isNaN(num));
 
   if (invalidArgs.length > 0) {
