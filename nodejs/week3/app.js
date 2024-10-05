@@ -29,10 +29,23 @@ apiRouter.use("/contacts", contactsAPIRouter);
 contactsAPIRouter.get("/", async (req, res) => {
   let query = knexInstance.select("*").from("contacts");
 
+  const allowedSortColumns = [
+    "id",
+    "first_name",
+    "last_name",
+    "email",
+    "phone",
+  ];
+
   if ("sort" in req.query) {
-    const orderBy = req.query.sort.toString();
-    if (orderBy.length > 0) {
-      query = query.orderByRaw(orderBy);
+    const orderBy = req.query.sort.toString().toLowerCase();
+    const [column, direction] = orderBy.split(" ");
+    const sortDirection = direction ? direction : "asc";
+
+    if (allowedSortColumns.includes(column) && ["asc", "desc"].includes(sortDirection)) {
+      query = query.orderBy(column, sortDirection);
+    } else {
+      return res.status(400).json({ error: "Invalid sort parameters" });
     }
   }
 
