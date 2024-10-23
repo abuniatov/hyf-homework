@@ -26,23 +26,22 @@ app.use("/api", apiRouter);
 const contactsAPIRouter = express.Router();
 apiRouter.use("/contacts", contactsAPIRouter);
 
+const allowedSortColumns = ["id", "first_name", "last_name", "email", "phone"];
+
+const allowedSortDirections = ["asc", "desc"];
+
 contactsAPIRouter.get("/", async (req, res) => {
   let query = knexInstance.select("*").from("contacts");
-
-  const allowedSortColumns = [
-    "id",
-    "first_name",
-    "last_name",
-    "email",
-    "phone",
-  ];
 
   if ("sort" in req.query) {
     const orderBy = req.query.sort.toString().toLowerCase();
     const [column, direction] = orderBy.split(" ");
     const sortDirection = direction ? direction : "asc";
 
-    if (allowedSortColumns.includes(column) && ["asc", "desc"].includes(sortDirection)) {
+    if (
+      allowedSortColumns.includes(column) &&
+      allowedSortDirections.includes(sortDirection)
+    ) {
       query = query.orderBy(column, sortDirection);
     } else {
       return res.status(400).json({ error: "Invalid sort parameters" });
@@ -56,7 +55,7 @@ contactsAPIRouter.get("/", async (req, res) => {
     res.json({ data });
   } catch (e) {
     console.error(e);
-    res.status(500).json({ error: "Internal server error" });
+    res.sendStatus(500);
   }
 });
 
